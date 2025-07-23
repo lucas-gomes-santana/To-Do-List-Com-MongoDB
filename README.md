@@ -1,6 +1,6 @@
 #### Projeto To-Do List Java + MongoDB
 
-Este é um projeto pessoal meu de caráter puramente acadêmico para aprender sobre os fundamentos e como funciona um banco de dados não relacional(NoSQL). Consite em um clássico mini-projeto de lista de tarefas
+Este é um projeto pessoal meu de caráter puramente acadêmico para aprender sobre os fundamentos e como funciona um banco de dados não relacional(NoSQL). Consite no clássico mini-projeto de lista de tarefas. Enviadas por requisições REST e armazenadas em um banco de dados MongoDB.
 
 ****
 
@@ -15,7 +15,7 @@ Este é um projeto pessoal meu de caráter puramente acadêmico para aprender so
 ### Como utilizar o projeto
 
 
-OBS: Necessário que tenha o Java, Maven e o MongoDB instalados na sua máquina, além de Postman ou Insomnia para enviar requisições para a API Java.
+OBS: Necessário que tenha o Java, Maven e o MongoDB instalados na sua máquina, além de Postman ou Insomnia para enviar requisições para a API.
 
 <br>
 
@@ -26,12 +26,27 @@ OBS: Necessário que tenha o Java, Maven e o MongoDB instalados na sua máquina,
   "descricao": "Assistir cursos para aprender sobre o MongoDB ",
   "status": "Pendente",
   "prioridade": "Alta",
-  "dataTermino": "2025-07-25T20:00:00"
+  "dataTermino": "30/07/2025 20:00"
 }
-
 ```
 
-**Requisição GET, URL: http://localhost:8080/tarefas**
+<br>
 
+**Requisição GET, URL: http://localhost:8080/tarefas/listartodas**
 
-**Requisição DELETE, URL: http://localhost:8080/tarefas/id_da_tarefa**
+<br>
+
+**Requisição DELETE, URL: http://localhost:8080/tarefas/remover/id_da_tarefa**
+
+<br>
+
+**Requisição PUT, URL: http://localhost:8080/tarefas/atualizar/id_da_tarefa**
+```json
+{
+  "titulo": "Estudar MongoDB",
+  "descricao": "Asistir vídeos no Youtube para aprender sobre bancos de dados não relacionais, como o MongoDB",
+  "status": "Concluída",
+  "prioridade": "",
+  "dataTermino": "30/07/2025 20:00"
+}
+```

@@ -22,7 +22,7 @@ public class TarefaController {
     
     private final TarefaRepository repository;
 
-    @GetMapping
+    @GetMapping("/listartodas")
     public List<TarefaModel> getAll() {
         return repository.findAll();
     }
@@ -38,13 +38,19 @@ public class TarefaController {
         return repository.save(tarefa);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public TarefaModel atualizar(@PathVariable String id, @RequestBody TarefaModel tarefa) {
-        tarefa.setId(id);
-        return repository.save(tarefa);
+        return repository.findById(id).map(tarefaExistente -> {
+            tarefaExistente.setTitulo(tarefa.getTitulo());
+            tarefaExistente.setDescricao(tarefa.getDescricao());
+            tarefaExistente.setStatus(tarefa.getStatus());
+            tarefaExistente.setPrioridade(tarefa.getPrioridade());
+            tarefaExistente.setDataTermino(tarefa.getDataTermino());
+            return repository.save(tarefaExistente);
+        }).orElse(null);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/remover/{id}")
     public void removerTarefa(@PathVariable String id) {
         repository.deleteById(id);
     }
